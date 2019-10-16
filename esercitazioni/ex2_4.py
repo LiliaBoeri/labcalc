@@ -6,7 +6,7 @@ import numpy as np
 plt.title('Esercizio N. 2 - frecce in python')
 plt.xlabel('x')
 plt.ylabel('y')
-x, y, vx, vy = np.loadtxt('temp.dat', usecols=(0,1,2,3), unpack=True)
+x, y, vx, vy = np.loadtxt('traiettoria_v.dat', usecols=(0,1,2,3), unpack=True)
 # le unità di misura delle frecce sono le stesse del plot
 # arrow(x,y,dx,dy) disegna una freccia da (x,y) a (x+dx,y+dy)
 # anche width, head_width, etc. sono in unità di misura del plot
@@ -16,9 +16,12 @@ for cc in range(0, len(x)):
     yi = y[cc]
     vxi = vx[cc]
     vyi = vy[cc]
-    plt.arrow(xi, yi, 20*vxi, 20*vyi, width=0.05, head_width=0.4, head_length=0.4, fc='r', ec='r')
+    plt.arrow(xi, yi, 5*vxi, 5*vyi, width=0.05, head_width=0.4, head_length=0.4, fc='r', ec='r')
 # impostiamo le stesse unità di misura per gli assi x e y per non deformare le frecce (gca è un acronimo per "get current axes")
 ax=plt.gca().set_aspect('equal')
+plt.xlim(-10,10)
+plt.ylim(-10,10)
+# Allarghiamo il range degli assi per visualizzare correttamente le frecce 
 plt.plot(x, y, label='traiettora con velocità')
 plt.savefig('traiettoria.png')
 plt.show()
