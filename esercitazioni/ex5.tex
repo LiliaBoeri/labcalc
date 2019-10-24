@@ -90,7 +90,7 @@ $\#$  Commesso $\#$ Ore $\#$ Vendite in Euro $\#$ Media $\#$ Voto\\
 Far girare il programma \texttt{dai\_voto.c} per i quattro trimestri del 2016, utilizzando i dati riportati nel riquadro sottostante. Una volta ottenute le medie orarie e i voti di ciascun venditore per tutti i trimestri:
 \begin{enumerate}
 \item Creare con \texttt{python} un grafico che mostri l'andamento delle medie orarie per ciascun commesso; sul grafico vanno riportati simultaneamente {\bf tutti i venditori}, con una legenda esplicativa.
-\item Fare un grafico simile che riporti l'andamento del voto di ciascun commesso in funzione del tempo.
+\item Fare un grafico che riporti l'andamento del voto di ciascun commesso in funzione del tempo.
 \item A partire dai due grafici precedenti, qual è il commesso che ha ottenuto la performance {\em media\/} migliore su ciascun trimestre? Quale la peggiore?
 Quale dei commessi ha dimostrato un margine di miglioramento e quale \`e peggiorato in maniera significativa?
 Scrivere le risposte sul file \texttt{risposte.txt}.
@@ -117,6 +117,24 @@ Scrivere le risposte sul file \texttt{risposte.txt}.
            10$\;$      212$\;$         22$\;$        374$\;$         32$\;$            643$\;$        47\\}
 dove H$i$, V$i$ stanno per ore e vendite di ciascun trimestre $i$.
 \end{mdframed}
- 
+ \begin{mdframed}[backgroundcolor=panna]
+\textbf{$\RHD$}
+Per leggere/scrivere dati da un file anziche' da standard I/O si usano i comandi \texttt{fscanf} e \texttt{fprintf}, analoghi a  \texttt{scanf} e \texttt{printf}. Per poter operare su di un file bisogna aprirlo con il comando \texttt{fopen},
+che assegna il nome del file da aprire a un puntatore a file. In pratica:
+\begin{itemize}
+\item All'inizio del programma, in fase di dichiarazione delle variabili, dichiarare un {\em puntatore a file} con il comando: \texttt{FILE *fp}.
+\item Prima di leggere/scrivere dal file, aprirlo con il comando: 
+\texttt{fp=fopen(``file.dat'',''r'')}.
+La lettera \texttt{r} indica che il file \`e aperto in modalit\`a solo
+lettura ({\em read}). Per aprire in modalit\`a scrittura sostituire \texttt{r} con \texttt{w} ({\em write}).
+\item Leggere o scrivere da un file usando i comandi:
+  \texttt{fscanf(fp,''\%stringa di formattazione'',\&var1,...,\&varn)} e
+  \texttt{fprintf(fp,''\%stringa di formattazione'',var1,...,varn)}.
+\item Alla fine del programma, chiudere il file con il comando
+  \texttt{fclose(fp)}.
+\end{itemize}
+
+\end{mdframed}
+
 
 \end{document}
